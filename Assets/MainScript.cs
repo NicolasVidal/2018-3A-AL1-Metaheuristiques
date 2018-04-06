@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class MainScript : MonoBehaviour
 {
@@ -8,15 +9,16 @@ public class MainScript : MonoBehaviour
 	void Start () {
 		Debug.Log("Hello les 3A AL1 !!! :)"); 
 		Debug.Log(cubes.Length);
-		Scramble(cubes);
+		StartCoroutine(Scramble(cubes));
 	}
 
-	void Scramble(Transform[] cubes)
+	IEnumerator Scramble(Transform[] cubes)
 	{
 		for (var i = 0; i < cubes.Length; i++)
 		{
 			var rdm = Random.Range(i, cubes.Length);
 			Swap(cubes[i], cubes[rdm]);
+			yield return null;
 		}
 	}
 
